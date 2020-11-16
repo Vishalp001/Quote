@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Random Quots</title>
+</head>
+<body>
+    <header class="main"> 
+    <div id="quotes"></div>
+    <div id="author"></div>
+    <div class="button">
+    <a id="newQ">Get Quotes</a>
+    <a id="tweetMe">Tweet</a>
+    </div>
+    </header>
+    <script>
+
+        const quotes = document.getElementById("quotes")
+        const author = document.getElementById("author")
+        const newQ = document.getElementById("newQ")
+        const tweetMe = document.getElementById("tweetMe")
+        let realdata = ""
+        let quotedata = '' 
+
+        const tweetNow = () =>{
+            let tweetPost = `http://twitter.com/intent/tweet/?text=${quotedata.text} ${quotedata.author}`
+            window.open(tweetPost)
+        } 
+        
+        const getNewQuote = () =>{
+            let rnum = Math.floor(Math.random() * 100);
+            quotedata = realdata[rnum]
+            quotes.innerText = `${quotedata.text}` 
+            quotedata.author == null
+            ? (author.innerText = 'unknown')
+            : (author.innerText = `~ ${quotedata.author}`);
+        }
+
+        const getQuotes = async () =>{
+            const api = 'https://type.fit/api/quotes';
+            try {
+                let data = await fetch(api);
+                 realdata = await data.json();
+                getNewQuote()
+
+            } catch (error) {
+                
+            }
+        }
+        tweetMe.addEventListener("click" , tweetNow ), 
+        newQ.addEventListener("click", getNewQuote )
+
+        getQuotes()
+    </script>
+
+</body>
+</html>
