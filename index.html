@@ -11,7 +11,7 @@
     <div id="quotes"></div>
     <div id="author"></div>
     <div class="button">
-    <a id="newQ">Get Quotes</a>
+    <a id="getQuote">Get Quotes</a>
     <a id="tweetMe">Tweet</a>
     </div>
     </header>
@@ -19,10 +19,10 @@
 
         const quotes = document.getElementById("quotes")
         const author = document.getElementById("author")
-        const newQ = document.getElementById("newQ")
+        const newQ = document.getElementById("getQuote")
         const tweetMe = document.getElementById("tweetMe")
         let realdata = ""
-        let quotedata = '' 
+        let quotedata = ''
 
         const tweetNow = () =>{
             let tweetPost = `http://twitter.com/intent/tweet/?text=${quotedata.text} ${quotedata.author}`

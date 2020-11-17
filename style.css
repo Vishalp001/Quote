@@ -27,7 +27,7 @@ body {
 .button {
   margin-top: 20px;
 }
-#newQ,
+#getQuote,
 #tweetMe {
   letter-spacing: 1px;
   background-color: #2a265f;
